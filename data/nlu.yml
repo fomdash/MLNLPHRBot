@@ -1,0 +1,104 @@
+version: "3.1"
+
+nlu:
+  - regex: experience
+    examples: |
+      \d+(\.\d+)?
+
+  - regex: expected_salary
+    examples: |
+      \d{5,7}
+
+  - regex: name
+    examples: |
+      [А-ЯЁ][а-яё]+
+
+  - synonym: Project Manager
+    examples: |
+     - PM
+     - Project Lead
+     - Руководитель проекта
+
+  - synonym: Data Analyst
+    examples: |
+     - Аналитик данных
+     - DA
+     - Data Researcher
+
+  - synonym: Python
+    examples: |
+     - Питон
+     - Python3
+     - Py
+
+  - intent: greet
+    examples: |
+     - Привет
+     - Здравствуйте
+     - Добрый день
+     - Приветствую
+
+  - intent: goodbye
+    examples: |
+     - До свидания
+     - Пока
+     - Всего доброго
+     - Удачи
+
+  - intent: provide_name
+    examples: |
+     - Меня зовут [Иван](name)
+     - Мое имя [Мария](name)
+     - Я [Андрей](name)
+     - [Иван](name)
+     - [Ольга](name)
+     - Меня зовут [Любовь](name)
+     - Можешь называть меня [Сергей](name)
+
+  - intent: provide_experience
+    examples: |
+     - У меня [3](experience) года опыта
+     - Я работаю [2](experience) года
+     - Меньше [1](experience) года
+     - [2](experience) года
+     - [5](experience) лет
+
+  - intent: provide_role
+    examples: |
+      - Я хочу податься на [Data Scientist](role)
+      - Интересует вакансия [MLOps Engineer](role)
+      - Думаю попробовать себя в [Data Analyst](role)
+      - Мне нравится роль [Product Manager](role)
+      - Не знаю, какая роль мне подходит
+      - [Software Engineer](role)
+      - [BI-аналитик](role)
+      - [ML Researcher](role)
+      - [Data Engineer](role)
+
+  - intent: provide_skills
+    examples: |
+     - Я знаю [Python](skills), [Pandas](skills) и [TensorFlow](skills)
+     - Умею работать с [SQL](skills) и [BI-инструментами](skills)
+     - Опыт работы с [Docker](skills) и [Kubernetes](skills)
+     - Хорошо разбираюсь в [BigQuery](skills) и [Airflow](skills)
+     - Владею [SQL](skills), [Excel](skills) и [Power BI](skills)
+     - [Java](skills), [Spring](skills), [PostgreSQL](skills)
+     - [Linux](skills), [Bash](skills), [CI/CD](skills)
+     - Мой стек: [C++](skills), [PyTorch](skills), [OpenCV](skills)
+     - Использовал [Hadoop](skills) и [Spark](skills)
+     - [FastAPI](skills), [Django](skills), [Flask](skills)
+     - [Python](skills), [Pandas](skills), [sql](skills), [BI](skills)
+
+  - intent: provide_expected_salary
+    examples: |
+     - Хочу зарплату от [150000](expected_salary) рублей
+     - Меня устраивает [120000](expected_salary) рублей в месяц
+     - [200000](expected_salary) рублей минимум
+     - [200000](expected_salary)
+     - [150000](expected_salary) рублей
+     - [120000](expected_salary) рублей минимум
+     - Меня устроит [250000](expected_salary)
+     - Хочу от [300000](expected_salary) рублей
+     - [500000](expected_salary)
+     - [75000](expected_salary) рублей
+     - Где-то [170000](expected_salary) рублей

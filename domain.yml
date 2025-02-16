@@ -1,0 +1,113 @@
+version: "3.1"
+
+intents:
+   - greet
+   - goodbye
+   - provide_name
+   - provide_experience
+   - provide_role
+   - provide_skills
+   - provide_expected_salary
+
+entities:
+   - name
+   - experience
+   - role
+   - skills
+   - expected_salary
+
+slots:
+   name:
+      type: text
+      influence_conversation: false
+      mappings:
+         - type: from_entity
+           entity: name
+
+   experience:
+      type: float
+      influence_conversation: false
+      mappings:
+         - type: from_entity
+           entity: experience
+
+   role:
+      type: text
+      influence_conversation: false
+      mappings:
+         - type: from_entity
+           entity: role
+
+   skills:
+      type: list
+      influence_conversation: false
+      mappings:
+         - type: from_entity
+           entity: skills
+
+   expected_salary:
+      type: float
+      influence_conversation: false
+      mappings:
+         - type: from_entity
+           entity: expected_salary
+
+responses:
+   utter_greet:
+      - text: "Привет! Я HR-бот. Давай познакомимся. Как тебя зовут?"
+
+   utter_ask_experience:
+      - text: "Сколько лет опыта у тебя в данной сфере?"
+
+   utter_ask_role:
+      - text: "На какую позицию ты хочешь податься?"
+        buttons:
+           - title: "Project Manager"
+             payload: "/provide_role{ 'role': 'Project Manager' }"
+           - title: "Data Analyst"
+             payload: "/provide_role{ 'role': 'Data Analyst' }"
+           - title: "Data Engineer"
+             payload: "/provide_role{ 'role': 'Data Engineer' }"
+           - title: "Data Scientist"
+             payload: "/provide_role{ 'role': 'Data Scientist' }"
+           - title: "MLOps Engineer"
+             payload: "/provide_role{ 'role': 'MLOps Engineer' }"
+
+   utter_ask_skills:
+      - text: "Какие ключевые навыки у тебя есть?"
+
+   utter_ask_expected_salary:
+      - text: "Какая зарплата тебя устраивает?"
+
+   utter_info_candidate:
+      - text: "Проверь информацию: Имя: {name}, Роль: {role}, Опыт: {experience}, Навыки: {skills}, Ожидаемая зарплата: {salary_expectation}"
+
+   utter_goodbye:
+      - text: "Спасибо за интервью! Удачи!"
+
+   utter_result:
+      - text: "Ваши данные успешно обработаны!"
+
+forms:
+   candidate_form:
+      required_slots:
+         - name
+         - role
+         - experience
+         - skills
+         - expected_salary
+
+actions:
+   - action_check_candidate
+   - utter_result
+   - utter_greet
+   - utter_ask_experience
+   - utter_ask_role
+   - utter_ask_skills
+   - utter_ask_expected_salary
+   - utter_info_candidate
+   - utter_goodbye
+
+session_config:
+   session_expiration_time: 60
+   carry_over_slots_to_new_session: true
