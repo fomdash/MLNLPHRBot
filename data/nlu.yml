@@ -1,104 +1,426 @@
 version: "3.1"
 
 nlu:
-  - regex: experience
-    examples: |
-      \d+(\.\d+)?
-
-  - regex: expected_salary
-    examples: |
-      \d{5,7}
-
-  - regex: name
-    examples: |
-      [А-ЯЁ][а-яё]+
-
-  - synonym: Project Manager
-    examples: |
-     - PM
-     - Project Lead
-     - Руководитель проекта
-
-  - synonym: Data Analyst
-    examples: |
-     - Аналитик данных
-     - DA
-     - Data Researcher
-
-  - synonym: Python
-    examples: |
-     - Питон
-     - Python3
-     - Py
 
   - intent: greet
     examples: |
-     - Привет
-     - Здравствуйте
-     - Добрый день
-     - Приветствую
+      - привет
+      - здравствуйте
+      - здравствуй
+      - добрый день
+      - приветствую
+      - добрый вечер
+      - доброе утро
+      - салют
+      - салам
+      - хей
+      - здорово
+      - приветик
 
   - intent: goodbye
     examples: |
-     - До свидания
-     - Пока
-     - Всего доброго
-     - Удачи
+      - до свидания
+      - пока
+      - всего доброго
+      - удачи
+      - прощай
+      - всего хорошего
+      - до встречи
+      - счастливо
+      - береги себя
+      - увидимся
+      - спасибо, до свидания
+      - спасибо 
+      
 
-  - intent: provide_name
+  - intent: inform_name
     examples: |
-     - Меня зовут [Иван](name)
-     - Мое имя [Мария](name)
-     - Я [Андрей](name)
-     - [Иван](name)
-     - [Ольга](name)
-     - Меня зовут [Любовь](name)
-     - Можешь называть меня [Сергей](name)
+      - меня зовут [Иван](name)
+      - мое имя [Мария](name)
+      - я [Андрей](name)
+      - [Ольга](name)
+      - меня зовут [Любовь](name)
+      - можешь называть меня [Сергей](name)
+      - мое имя [Екатерина](name)
+      - я [Павел](name)
+      - зовут [Анастасия](name)
+      - меня зовут [Дмитрий](name)
+  
+      - меня зовут [иван](name:Иван)
+      - мое имя [мария](name:Мария)
+      - я [андрей](name:Андрей)
+      - [ольга](name:Ольга)
+      - меня зовут [любовь](name:Любовь)
+      - можешь называть меня [сергей](name:Сергей)
+      - мое имя [екатерина](name:Екатерина)
+      - я [павел](name:Павел)
+      - зовут [анастасия](name:Анастасия)
+      - меня зовут [дмитрий](name:Дмитрий)
+  
+      - меня зовут [Ваня](name:Иван)
+      - мое имя [Маша](name:Мария)
+      - я [Андрюша](name:Андрей)
+      - [Оля](name:Ольга)
+      - меня зовут [Люба](name:Любовь)
+      - можешь называть меня [Сережа](name:Сергей)
+      - мое имя [Катя](name:Екатерина)
+      - я [Паша](name:Павел)
+      - зовут [Настя](name:Анастасия)
+      - меня зовут [Дима](name:Дмитрий)
+      - представь меня как [Женя](name:Евгений)
+      - я [Таня](name:Татьяна)
+      - зови меня [Костя](name:Константин)
+      - зовут [Лена](name:Елена)
+      - имя [Гриша](name:Григорий)
+  
+      - меня зовут [ваня](name:Иван)
+      - мое имя [маша](name:Мария)
+      - я [андрюша](name:Андрей)
+      - [оля](name:Ольга)
+      - меня зовут [люба](name:Любовь)
+      - можешь называть меня [сережа](name:Сергей)
+      - мое имя [катя](name:Екатерина)
+      - я [паша](name:Павел)
+      - зовут [настя](name:Анастасия)
+      - меня зовут [дима](name:Дмитрий)
+      - представь меня как [женя](name:Евгений)
+      - я [таня](name:Татьяна)
+      - зови меня [костя](name:Константин)
+      - зовут [лена](name:Елена)
+      - имя [гриша](name:Григорий)
 
-  - intent: provide_experience
+  - intent: inform_experience
     examples: |
-     - У меня [3](experience) года опыта
-     - Я работаю [2](experience) года
-     - Меньше [1](experience) года
-     - [2](experience) года
-     - [5](experience) лет
+      - у меня [3](experience:3) года опыта
+      - я работаю [2](experience:2) года
+      - меньше [1](experience:1) года
+      - у меня [4](experience:4) года опыта
+      - [5](experience:5) лет
+      - я работаю уже [6](experience:6) лет
+      - в этой сфере я работаю [7](experience:7) лет
+      - у меня [10](experience:10) лет опыта
+      - в прошлом году у меня было [8](experience:8) лет
+      - у меня более [12](experience:12) лет в индустрии
 
-  - intent: provide_role
-    examples: |
-      - Я хочу податься на [Data Scientist](role)
-      - Интересует вакансия [MLOps Engineer](role)
-      - Думаю попробовать себя в [Data Analyst](role)
-      - Мне нравится роль [Product Manager](role)
-      - Не знаю, какая роль мне подходит
-      - [Software Engineer](role)
-      - [BI-аналитик](role)
-      - [ML Researcher](role)
-      - [Data Engineer](role)
+      - я работала [три](experience:3) года в этой сфере
+      - у меня было [пять](experience:5) лет опыта в этой области
+      - я работала в компании [четыре](experience:4) года
+      - работаю в этой области уже [два](experience:2) года
+      - в прошлом году я работала [шесть](experience:6) лет в этом направлении
+      - я работала [один](experience:1) год в сфере аналитики
+      - у меня был опыт работы [восемь](experience:8) лет
+      - я работала [десять](experience:10) лет в области машинного обучения
+      - за [пять](experience:5) лет я приобрела много опыта
+      - я работала [семь](experience:7) лет в компании по разработке ПО
+      
+      - я работала около [трех](experience:3) лет
+      - в сфере аналитики работаю около [пяти](experience:5) лет
+      - я работала около [двух](experience:2) лет в IT
+      - в своей области работаю около [четырех](experience:4) лет
+      - у меня было около [шести](experience:6) лет опыта
+      - я работала около [одного](experience:1) года в команде разработчиков
+      - я работаю в компании около [семи](experience:7) лет
+      - в прошлом году я работала около [десяти](experience:10) лет в этой сфере
+      - у меня был опыт около [восьми](experience:8) лет
+      - работала около [пятнадцати](experience:15) лет в этой отрасли
+      
+      - у меня [нет опыта](experience:0) в этой сфере 
+      - я [не работала](experience:0) в этой области 
+      - я [не работал](experience:0) на этой позиции 
+      
+    
+  - intent: inform_position
+    examples: | 
+      - я ищу работу на позиции [Project Manager](position)
+      - я хочу подать заявку на [Project Lead](position:Project Manager)
+      - меня интересует позиция [PM](position:Project Manager)
+      - я хочу быть [Project Manager](position:Project Manager)
+      - хочу работать на должности [PM](position:Project Manager)
+      - я кандидат на вакансию [Project Manager](position:Project Manager)
+      - я заинтересован в позиции [Project Manager](position:Project Manager)
+      - ищу работу на позиции [Project Manager](position:Project Manager)
+      - хочу стать [PM](position:Project Manager)
+      - подаю заявку на позицию [Project Lead](position:Project Manager)
+      - я ищу работу на позиции [проджект менеджер](position:Project Manager)
+      - я хочу подать заявку на [руководителя проекта](position:Project Manager)
+      - меня интересует позиция [проджект менеджера](position:Project Manager)
+      - я хочу быть [проджект менеджером](position:Project Manager)
+      - хочу работать на должности [менеджера проектов](position:Project Manager)
+      - я кандидат на вакансию [руководителя проекта](position:Project Manager)
+      - я заинтересован в позиции [менеджера проекта](position:Project Manager)
+      - ищу работу на позиции [проджект менеджера](position:Project Manager)
+      - хочу стать [менеджером проектов](position:Project Manager)
+      - подаю заявку на позицию [проджект менеджера](position:Project Manager)
 
-  - intent: provide_skills
-    examples: |
-     - Я знаю [Python](skills), [Pandas](skills) и [TensorFlow](skills)
-     - Умею работать с [SQL](skills) и [BI-инструментами](skills)
-     - Опыт работы с [Docker](skills) и [Kubernetes](skills)
-     - Хорошо разбираюсь в [BigQuery](skills) и [Airflow](skills)
-     - Владею [SQL](skills), [Excel](skills) и [Power BI](skills)
-     - [Java](skills), [Spring](skills), [PostgreSQL](skills)
-     - [Linux](skills), [Bash](skills), [CI/CD](skills)
-     - Мой стек: [C++](skills), [PyTorch](skills), [OpenCV](skills)
-     - Использовал [Hadoop](skills) и [Spark](skills)
-     - [FastAPI](skills), [Django](skills), [Flask](skills)
-     - [Python](skills), [Pandas](skills), [sql](skills), [BI](skills)
+      - я ищу работу на позиции [Data Analyst](position:Data Analyst)
+      - хочу работать на должности [Data Researcher](position:Data Analyst)
+      - меня интересует вакансия [DA](position:Data Analyst)
+      - я подаю заявку на позицию [Data Analyst](position:Data Analyst)
+      - хочу стать [Data Analyst](position:Data Analyst)
+      - ищу работу на позиции [Data Analyst](position:Data Analyst)
+      - я кандидат на позицию [Data Analyst](position:Data Analyst)
+      - я готов работать на должности [Data Researcher](position:Data Analyst)
+      - моя цель стать [Data Analyst](position:Data Analyst)
+      - подаю заявку на вакансию [Data Researcher](position:Data Analyst)
+      - я ищу работу на позиции [аналитик данных](position:Data Analyst)
+      - хочу работать на должности [специалист по данным](position:Data Analyst)
+      - меня интересует вакансия [анализатор данных](position:Data Analyst)
+      - я подаю заявку на позицию [аналитик](position:Data Analyst)
+      - хочу стать [аналитиком данных](position:Data Analyst)
+      - ищу работу на позиции [аналитик данных](position:Data Analyst)
+      - я кандидат на позицию [специалист по данным](position:Data Analyst)
+      - я готов работать на должности [анализатор данных](position:Data Analyst)
+      - моя цель стать [аналитиком данных](position:Data Analyst)
+      - подаю заявку на вакансию [аналитика данных](position:Data Analyst)
 
-  - intent: provide_expected_salary
+      - я ищу работу на позиции [Data Engineer](position:Data Engineer)
+      - хочу работать на должности [Data Infrastructure Engineer](position:Data Engineer)
+      - меня интересует вакансия [Big Data Engineer](position:Data Engineer)
+      - я подаю заявку на позицию [Data Engineer](position:Data Engineer)
+      - хочу стать [Data Engineer](position:Data Engineer)
+      - ищу работу на позиции [Data Engineer](position:Data Engineer)
+      - я кандидат на позицию [Data Engineer](position:Data Engineer)
+      - я готов работать на должности [Data Infrastructure Engineer](position:Data Engineer)
+      - моя цель стать [Big Data Engineer](position:Data Engineer)
+      - подаю заявку на вакансию [Data Engineer](position:Data Engineer)
+      - я ищу работу на позиции [инженер данных](position:Data Engineer)
+      - хочу работать на должности [инженер по данным](position:Data Engineer)
+      - я подаю заявку на позицию [инженер данных](position:Data Engineer)
+      - хочу стать [инженером по данным](position:Data Engineer)
+      - ищу работу на позиции [инженер по данным](position:Data Engineer)
+      - я готов работать на должности [инженер по данным](position:Data Engineer)
+      - моя цель стать [инженером данных](position:Data Engineer)
+      - подаю заявку на вакансию [инженера данных](position:Data Engineer)
+
+      - я ищу работу на позиции [Data Scientist](position:Data Scientist)
+      - хочу работать на должности [DS](position:Data Scientist)
+      - меня интересует вакансия [Machine Learning Scientist](position:Data Scientist)
+      - я подаю заявку на позицию [Data Scientist](position:Data Scientist)
+      - хочу стать [Data Scientist](position:Data Scientist)
+      - ищу работу на позиции [Data Scientist](position:Data Scientist)
+      - я кандидат на позицию [Data Scientist](position:Data Scientist)
+      - я готов работать на должности [Machine Learning Scientist](position:Data Scientist)
+      - моя цель стать [Data Scientist](position:Data Scientist)
+      - подаю заявку на вакансию [Machine Learning Scientist](position:Data Scientist)
+      - я ищу работу на позиции [ученый данных](position:Data Scientist)
+      - хочу работать на должности [специалист по данным](position:Data Scientist)
+      - меня интересует вакансия [ученый данных](position:Data Scientist)
+      - я подаю заявку на позицию [специалист по данным](position:Data Scientist)
+      - хочу стать [ученым данных](position:Data Scientist)
+      - ищу работу на позиции [ученый данных](position:Data Scientist)
+      - я кандидат на позицию [специалист по данным](position:Data Scientist)
+      - я готов работать на должности [ученый данных](position:Data Scientist)
+      - моя цель стать [ученым данных](position:Data Scientist)
+      - подаю заявку на вакансию [ученого данных](position:Data Scientist)
+
+      - я ищу работу на позиции [MLOps Engineer](position:MLOps Engineer)
+      - хочу работать на должности [ML DevOps Engineer](position:MLOps Engineer)
+      - меня интересует вакансия [MLOps Engineer](position:MLOps Engineer)
+      - я подаю заявку на позицию [MLOps Engineer](position:MLOps Engineer)
+      - хочу стать [MLOps Engineer](position:MLOps Engineer)
+      - ищу работу на позиции [MLOps Engineer](position:MLOps Engineer)
+      - я кандидат на позицию [MLOps Engineer](position:MLOps Engineer)
+      - я готов работать на должности [ML Ops Engineer](position:MLOps Engineer)
+      - моя цель стать [MLOps Engineer](position:MLOps Engineer)
+      - подаю заявку на вакансию [ML Ops Engineer](position:MLOps Engineer)
+      - я ищу работу на позиции [инженер mlops](position:MLOps Engineer)
+      - хочу работать на должности [инженер по mlops](position:MLOps Engineer)
+      - меня интересует вакансия [mlops инженер](position:MLOps Engineer)
+      - я подаю заявку на позицию [инженер mlops](position:MLOps Engineer)
+      - хочу стать [инженером mlops](position:MLOps Engineer)
+      - ищу работу на позиции [инженер по mlops](position:MLOps Engineer)
+      - я кандидат на позицию [специалист mlops](position:MLOps Engineer)
+      - я готов работать на должности [инженер mlops](position:MLOps Engineer)
+      - моя цель стать [инженером по mlops](position:MLOps Engineer)
+      - подаю заявку на вакансию [специалиста mlops](position:MLOps Engineer)
+
+  - intent: inform_skills
     examples: |
-     - Хочу зарплату от [150000](expected_salary) рублей
-     - Меня устраивает [120000](expected_salary) рублей в месяц
-     - [200000](expected_salary) рублей минимум
-     - [200000](expected_salary)
-     - [150000](expected_salary) рублей
-     - [120000](expected_salary) рублей минимум
-     - Меня устроит [250000](expected_salary)
-     - Хочу от [300000](expected_salary) рублей
-     - [500000](expected_salary)
-     - [75000](expected_salary) рублей
-     - Где-то [170000](expected_salary) рублей
+      - [Agile](skills)
+      - [Scrum](skills)
+      - [Kanban](skills)
+      - [JIRA](skills)
+      - [Trello](skills)
+      - [Risk Management](skills)
+      - [Stakeholder Management](skills)
+      - [Project Planning](skills)
+      - [Budgeting](skills)
+      - [Leadership](skills)
+      - я умею работать с [Agile](skills)
+      - у меня есть опыт с [Scrum](skills)
+      - я знаю [Kanban](skills)
+      - использую [JIRA](skills) в проектах
+      - работал с [Trello](skills)
+      - у меня есть навыки в [Risk Management](skills)
+      - опыт в [Stakeholder Management](skills)
+      - владею [Project Planning](skills)
+      - умею делать [Budgeting](skills)
+      - обладаю навыками [Leadership](skills)
+      - я умею работать с [гибкой методологией](skills:Agile)
+      - у меня есть опыт с [скрамом](skills:Scrum)
+      - я знаю [канбан](skills:Kanban)
+      - использую [джиру](skills:JIRA) в проектах
+      - работал с [трелло](skills:Trello)
+      - у меня есть навыки в [управлении рисками](skills:Risk Management)
+      - опыт в [управлении заинтересованными сторонами](skills:Stakeholder Management)
+      - владею [планированием проектов](skills:Project Planning)
+      - умею делать [бюджетирование](skills:Budgeting)
+      - обладаю навыками [лидерства](skills:Leadership)
+
+      - [SQL](skills)
+      - [BI](skills)
+      - [Excel](skills)
+      - [Power BI](skills)
+      - [Tableau](skills)
+      - [Python](skills)
+      - [Data Visualization](skills)
+      - [A/B Testing](skills)
+      - [Statistics](skills)
+      - [ETL](skills)
+      - [Google Analytics](skills)
+      - я работал с [SQL](skills)
+      - хорошо знаю [Excel](skills)
+      - умею строить отчеты в [Power BI](skills)
+      - опыт работы с [Tableau](skills)
+      - программирую на [Python](skills)
+      - владею [Data Visualization](skills)
+      - работал с [A/B Testing](skills)
+      - имею знания в [Statistics](skills)
+      - опыт работы с [ETL](skills)
+      - использую [Google Analytics](skills)
+      - я работал с [эс-кью-эль](skills:SQL)
+      - хорошо знаю [эксель](skills:Excel)
+      - умею строить отчеты в [пауэр би](skills:Power BI)
+      - опыт работы с [табло](skills:Tableau)
+      - программирую на [питоне](skills:Python)
+      - владею [визуализацией данных](skills:Data Visualization)
+      - работал с [а/б тестированием](skills:A/B Testing)
+      - имею знания в [статистике](skills:Statistics)
+      - опыт работы с [етл](skills:ETL)
+      - использую [гугл аналитикс](skills:Google Analytics)
+
+      - [Python](skills)
+      - [SQL](skills)
+      - [Apache Spark](skills)
+      - [Kafka](skills)
+      - [Airflow](skills)
+      - [ETL](skills)
+      - [AWS](skills)
+      - [BigQuery](skills)
+      - [Docker](skills)
+      - [Kubernetes](skills)
+      - я работал с [Python](skills)
+      - использую [SQL](skills) для работы с базами данных
+      - владею [Apache Spark](skills)
+      - использую [Kafka](skills) для обработки данных
+      - знаю [Airflow](skills) для оркестрации рабочих процессов
+      - опыт работы с [ETL](skills) процессами
+      - работал с [AWS](skills) в облаке
+      - использую [BigQuery](skills) для анализа данных
+      - знаю [Docker](skills) для контейнеризации
+      - умею работать с [Kubernetes](skills) для оркестрации контейнеров
+      - я работал с [питоном](skills:Python)
+      - использую [эс-кью-эль](skills:SQL) для работы с базами данных
+      - владею [апач спарк](skills:Apache Spark)
+      - использую [кафку](skills:Kafka) для обработки данных
+      - знаю [эйрфлоу](skills:Airflow) для оркестрации рабочих процессов
+      - опыт работы с [етл](skills:ETL) процессами
+      - работал с [авс](skills:AWS) в облаке
+      - использую [бигкуери](skills:BigQuery) для анализа данных
+      - знаю [докер](skills:Docker) для контейнеризации
+      - умею работать с [кубернетесом](skills:Kubernetes) для оркестрации контейнеров
+
+      - [Python](skills)
+      - [Machine Learning](skills)
+      - [Deep Learning](skills)
+      - [NLP](skills)
+      - [Computer Vision](skills)
+      - [Pandas](skills)
+      - [NumPy](skills)
+      - [Scikit-learn](skills)
+      - [PyTorch](skills)
+      - [TensorFlow](skills)
+      - работал с [Python](skills) для анализа данных
+      - использую [Machine Learning](skills) для построения моделей
+      - занимаюсь [Deep Learning](skills) для решения задач
+      - применяю [NLP](skills) для обработки текстовых данных
+      - использую [Computer Vision](skills) для обработки изображений
+      - знаю [Pandas](skills) для работы с данными
+      - использую [NumPy](skills) для научных вычислений
+      - работал с [Scikit-learn](skills) для машинного обучения
+      - использую [PyTorch](skills) для создания нейросетей
+      - опыт работы с [TensorFlow](skills) в области ИИ
+      - работал с [питоном](skills:Python) для анализа данных
+      - я использовал [питон](skills:Python)
+      - использую [машинное обучение](skills:Machine Learning) для построения моделей
+      - занимаюсь [глубоким обучением](skills:Deep Learning) для решения задач
+      - применяю [обработку естественного языка](skills:NLP) для обработки текстовых данных
+      - использую [компьютерное зрение](skills:Computer Vision) для обработки изображений
+      - знаю [пандас](skills:Pandas) для работы с данными
+      - использую [нампай](skills:NumPy) для научных вычислений
+      - работал с [сайкит-lern](skills:Scikit-learn) для машинного обучения
+      - использую [пайторч](skills:PyTorch) для создания нейросетей
+      - опыт работы с [тензорфлоу](skills:TensorFlow) в области ИИ
+
+      - [CI/CD](skills)
+      - [Docker](skills)
+      - [Kubernetes](skills)
+      - [AWS](skills)
+      - [MLflow](skills)
+      - [Airflow](skills)
+      - [TensorFlow Serving](skills)
+      - [FastAPI](skills)
+      - [Grafana](skills)
+      - [Prometheus](skills)
+      - использую [CI/CD](skills) для автоматизации процессов
+      - работаю с [Docker](skills) для создания контейнеров
+      - знаю [Kubernetes](skills) для оркестрации контейнеров
+      - использую [AWS](skills) для облачных решений
+      - применяю [MLflow](skills) для управления моделями
+      - работал с [Airflow](skills) для оркестрации рабочих процессов
+      - использую [TensorFlow Serving](skills) для развертывания моделей
+      - работал с [FastAPI](skills) для создания API
+      - использую [Grafana](skills) для мониторинга
+      - использую [Prometheus](skills) для сбора метрик
+      - использую [си-ай/ди-сии](skills:CI/CD) для автоматизации процессов
+      - работаю с [докером](skills:Docker) для создания контейнеров
+      - знаю [кубернетес](skills:Kubernetes) для оркестрации контейнеров
+      - использую [авс](skills:AWS) для облачных решений
+      - применяю [эм-эльфлоу](skills:MLflow) для управления моделями
+      - работал с [эйрфлоу](skills:Airflow) для оркестрации рабочих процессов
+      - использую [тензорфлоу сервисинг](skills:TensorFlow Serving) для развертывания моделей
+      - работал с [фастапи](skills:FastAPI) для создания API
+      - использую [графану](skills:Grafana) для мониторинга
+      - использую [прометеус](skills:Prometheus) для сбора метрик
+
+  - intent: inform_salary
+    examples: |
+      - [30000](salary:30000)
+      - [150 000](salary:150000)
+      - [100000](salary:100000) рублей
+      - [600000](salary:600000) руб
+      - [130 000](salary:130000) рублей
+      - [60 000](salary:60000) руб
+      - [90к](salary:90000) рублей
+      - [110К](salary:110000) рублей
+      - [180k](salary:180000) рублей
+      - [160k](salary:160000) руб
+      - [150K](salary:150000) рублей
+      - [75K](salary:75000) руб
+      - [135 тысяч](salary:135000) рублей
+      - [350 тысяч](salary:350000) руб
+      - [500 тыс](salary:500000) рублей
+      - [250 тыс](salary:250000) руб
+      - я бы хотел получать [300000](salary:300000) рублей
+      - меня устроило бы [650000](salary:650000) руб
+      - меня бы устроило [400000](salary:400000) в месяц
+      - я хочу зарабатывать [60000](salary:60000)
+      - моя зарплата должна быть [50000](salary:50000) руб
+      - ожидаю [80 тысяч](salary:80000) рублей
+      - я рассчитываю на [30 000](salary:30000) рублей
+      - хотелось бы получать [50k](salary:50000) рублей 
+      - я готов получать [150K](salary:150000) руб
+      - мне подходит [100 тыс](salary:100000) рублей 
+      - хочу зарабатывать [140000](salary:140000) рублей в месяц
+
+

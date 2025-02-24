@@ -1,20 +1,28 @@
 version: "3.1"
 
+session_config:
+   session_expiration_time: 60
+   carry_over_slots_to_new_session: true
+
 intents:
    - greet
    - goodbye
-   - provide_name
-   - provide_experience
-   - provide_role
-   - provide_skills
-   - provide_expected_salary
+   - inform_name
+   - inform_experience
+   - inform_position
+   - inform_skills
+   - inform_salary
 
 entities:
    - name
+   - position
    - experience
-   - role
    - skills
-   - expected_salary
+   - salary
+#   - age
+#   - education
+#   - university
+#   - work_hours
 
 slots:
    name:
@@ -23,91 +31,62 @@ slots:
       mappings:
          - type: from_entity
            entity: name
-
    experience:
       type: float
       influence_conversation: false
       mappings:
          - type: from_entity
            entity: experience
-
-   role:
+   position:
       type: text
       influence_conversation: false
       mappings:
          - type: from_entity
-           entity: role
-
+           entity: position
    skills:
       type: list
       influence_conversation: false
       mappings:
          - type: from_entity
            entity: skills
-
-   expected_salary:
+   salary:
       type: float
       influence_conversation: false
       mappings:
          - type: from_entity
-           entity: expected_salary
+           entity: salary
 
 responses:
    utter_greet:
       - text: "Привет! Я HR-бот. Давай познакомимся. Как тебя зовут?"
-
+   utter_ask_position:
+      - text: "{name}, для начала, расскажи, на какую позицию ты хотел(а) бы подать заявку: Project Manager, Data Analyst, Data Engineer, Data Scientist или MLOps Engineer?" # "У нас открыты следующие вакансии: Project Manager, Data Analyst, Data Engineer, Data Scientist, MLOps Engineer. На какую из них ты хочешь подать заявку?"
    utter_ask_experience:
-      - text: "Сколько лет опыта у тебя в данной сфере?"
-
-   utter_ask_role:
-      - text: "На какую позицию ты хочешь податься?"
-        buttons:
-           - title: "Project Manager"
-             payload: "/provide_role{ 'role': 'Project Manager' }"
-           - title: "Data Analyst"
-             payload: "/provide_role{ 'role': 'Data Analyst' }"
-           - title: "Data Engineer"
-             payload: "/provide_role{ 'role': 'Data Engineer' }"
-           - title: "Data Scientist"
-             payload: "/provide_role{ 'role': 'Data Scientist' }"
-           - title: "MLOps Engineer"
-             payload: "/provide_role{ 'role': 'MLOps Engineer' }"
-
+      - text: "Понял! Сколько лет ты работал(а) на позиции {position}?" # "Сколько лет опыта у тебя в данной сфере?"
    utter_ask_skills:
-      - text: "Какие ключевые навыки у тебя есть?"
-
-   utter_ask_expected_salary:
-      - text: "Какая зарплата тебя устраивает?"
-
-   utter_info_candidate:
-      - text: "Проверь информацию: Имя: {name}, Роль: {role}, Опыт: {experience}, Навыки: {skills}, Ожидаемая зарплата: {salary_expectation}"
-
+      - text: "А какие основные навыки и инструменты ты использовал(а) за это время?" # "Какие навыки у тебя есть в профессиональной деятельности? Перечисли ключевые инструменты и технологии, с которыми ты знаком"
+   utter_ask_salary:
+      - text: "Какую зарплату ты ожидаешь на этой позиции?" # "Какую зарплату ты ожидаешь по данной позиции?"  # Какая зарплата тебя устраивает?
+   utter_you_name_experience_position_skills_salary:
+      - text: "Имя: {name}, Роль: {position}, Опыт: {experience}, Навыки: {skills}, Ожидаемая зарплата: {salary}"
+#   utter_info_candidate:
+#      - text: "Проверь информацию: Имя: {name}, Роль: {position}, Опыт: {experience}, Навыки: {skills}, Ожидаемая зарплата: {salary}"
    utter_goodbye:
       - text: "Спасибо за интервью! Удачи!"
-
-   utter_result:
-      - text: "Ваши данные успешно обработаны!"
+#   utter_result:
+#      - text: "Ваши данные успешно обработаны!"
 
 forms:
-   candidate_form:
+   form_person_info:
       required_slots:
          - name
-         - role
+         - position
          - experience
          - skills
-         - expected_salary
+         - salary
 
 actions:
    - action_check_candidate
-   - utter_result
-   - utter_greet
-   - utter_ask_experience
-   - utter_ask_role
-   - utter_ask_skills
-   - utter_ask_expected_salary
-   - utter_info_candidate
-   - utter_goodbye
 
-session_config:
-   session_expiration_time: 60
-   carry_over_slots_to_new_session: true
+
+

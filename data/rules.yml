@@ -1,30 +1,29 @@
 version: "3.1"
 
 rules:
+#  - rule: Ответ на приветствие
+#    steps:
+#      - intent: greet
+#      - action: utter_greet
 
-  - rule: Ответ на приветствие
-    steps:
-      - intent: greet
-      - action: utter_greet
+#  - rule: Ответ на прощание
+#    steps:
+#      - intent: goodbye
+#      - action: utter_goodbye
 
-  - rule: Ответ на прощание
-    steps:
-      - intent: goodbye
-      - action: utter_goodbye
-
-  - rule: Запуск формы кандидата
-    steps:
-      - intent: provide_name
-      - action: candidate_form
-      - active_loop: candidate_form
-
-  - rule: Завершение формы кандидата
-    condition:
-      - active_loop: candidate_form
-    steps:
-      - action: candidate_form
-      - active_loop: null
-      - action: utter_info_candidate
-      - action: action_check_candidate
-      - action: utter_result
+#  - rule: Запуск формы кандидата
+#    steps:
+#      - intent: inform_name
+#      - action: form_person_info
+#      - active_loop: form_person_info
+#
+#  - rule: Завершение формы кандидата
+#    condition:
+#      - active_loop: form_person_info
+#    steps:
+#      - action: form_person_info
+#      - active_loop: null
+#      - action: utter_info_candidate
+#      - action: action_check_candidate
+#      - action: utter_result
 
